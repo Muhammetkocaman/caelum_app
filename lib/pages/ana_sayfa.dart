@@ -35,50 +35,59 @@ class _AnaSayfaState extends State<AnaSayfa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: TextField(
+          controller: _aramaController,
+          decoration: InputDecoration(
+            hintText: 'Şehir ara...'.tr,
+            hintStyle: const TextStyle(color: Colors.white70),
+            border: InputBorder.none,
+          ),
+          style: const TextStyle(color: Colors.white),
+          onSubmitted: (value) {
+            if (value.isNotEmpty) {
+              _controller.veriGetir(value);
+            }
+          },
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
       body: _sayfalar[_seciliSayfa],
-      bottomNavigationBar: _altNavigasyonBar(),
-    );
-  }
-
-
-  Widget _altNavigasyonBar() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.blue.shade500.withOpacity(0.8),
-            Colors.blue.shade700,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).primaryColor,
+              Theme.of(context).primaryColor.withOpacity(0.8),
+            ],
+          ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _seciliSayfa,
+          onTap: (index) => setState(() => _seciliSayfa = index),
+          backgroundColor: Colors.transparent,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.cloud),
+              label: 'Hava Durumu'.tr,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.calendar_today),
+              label: 'Tahmin'.tr,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.air),
+              label: 'Hava Kalitesi'.tr,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.settings),
+              label: 'Ayarlar'.tr,
+            ),
           ],
         ),
-      ),
-      child: BottomNavigationBar(
-        currentIndex: _seciliSayfa,
-        onTap: (index) => setState(() => _seciliSayfa = index),
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.transparent,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withOpacity(0.5),
-        elevation: 0,
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.cloud),
-            label: 'Hava Durumu'.tr,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.calendar_today),
-            label: 'Tahmin'.tr,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.air),
-            label: 'Hava Kalitesi'.tr,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.settings),
-            label: 'Ayarlar'.tr,
-          ),
-        ],
       ),
     );
   }
