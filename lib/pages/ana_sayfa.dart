@@ -6,6 +6,7 @@ import 'package:weather_app_flutter/pages/tahmin_sayfasi.dart';
 import '../controllers/hava_durumu_controller.dart';
 import '../widgets/mevcut_hava_durumu_widget.dart';
 import '../widgets/detay_bilgiler_widget.dart';
+import '../controllers/auth_controller.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({super.key});
@@ -51,6 +52,12 @@ class _AnaSayfaState extends State<AnaSayfa> {
           },
         ),
         backgroundColor: Theme.of(context).primaryColor,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () => Get.find<AuthController>().cikisYap(),
+          ),
+        ],
       ),
       body: _sayfalar[_seciliSayfa],
       bottomNavigationBar: Container(
