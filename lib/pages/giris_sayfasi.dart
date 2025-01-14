@@ -71,7 +71,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                   ),
                   const SizedBox(height: 32),
                   Text(
-                    'Hava Durumu'.tr,
+                    'Caelum',
                     style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,

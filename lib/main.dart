@@ -15,7 +15,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Hava Durumu Uygulaması',
+      title: 'Caelum',
       theme: AppTheme.lightTheme,
       darkTheme: ThemeData.dark(useMaterial3: true),
       home: const GirisSayfasi(),
