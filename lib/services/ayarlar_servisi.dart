@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather_app_flutter/utils/constanst.dart';
 
 class AyarlarServisi extends GetxService {
   static const String _sicaklikBirimiKey = 'sicaklik_birimi';
@@ -48,6 +49,6 @@ class AyarlarServisi extends GetxService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_temaKey, karanlik);
     _karanlikTema.value = karanlik;
-    Get.changeThemeMode(karanlik ? ThemeMode.dark : ThemeMode.light);
+    Get.changeTheme(karanlik ? ThemeData.dark() : AppTheme.lightTheme);
   }
 }

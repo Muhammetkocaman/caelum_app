@@ -6,7 +6,6 @@ import 'package:weather_app_flutter/pages/tahmin_sayfasi.dart';
 import '../controllers/hava_durumu_controller.dart';
 import '../widgets/mevcut_hava_durumu_widget.dart';
 import '../widgets/detay_bilgiler_widget.dart';
-import '../utils/constanst.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({super.key});
@@ -36,66 +35,11 @@ class _AnaSayfaState extends State<AnaSayfa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          // Arkaplan gradyanı
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.blue.shade700,
-                  Colors.blue.shade500,
-                ],
-              ),
-            ),
-          ),
-          // Ana içerik
-          Column(
-            children: [
-              // Arama alanı
-              _aramaAlani(),
-              // Sayfa içeriği
-              Expanded(
-                child: PageView(
-                  onPageChanged: (index) => setState(() => _seciliSayfa = index),
-                  children: _sayfalar,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+      body: _sayfalar[_seciliSayfa],
       bottomNavigationBar: _altNavigasyonBar(),
     );
   }
 
-  Widget _aramaAlani() {
-    return Container(
-      margin: EdgeInsets.only(top: h * 0.05, left: 20, right: 20),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: TextField(
-        controller: _aramaController,
-        style: const TextStyle(color: kTextColor1),
-        decoration: InputDecoration(
-          hintText: 'Şehir Ara'.tr,
-          hintStyle: const TextStyle(color: kTextColor2),
-          prefixIcon: const Icon(Icons.search, color: kTextColor2),
-          border: InputBorder.none,
-          contentPadding: const EdgeInsets.all(15),
-        ),
-        onSubmitted: (value) {
-          if (value.isNotEmpty) {
-            _controller.veriGetir(value);
-          }
-        },
-      ),
-    );
-  }
 
   Widget _altNavigasyonBar() {
     return Container(

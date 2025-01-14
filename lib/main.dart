@@ -4,6 +4,7 @@ import 'package:weather_app_flutter/services/ayarlar_servisi.dart';
 import 'package:weather_app_flutter/services/weather_api_client.dart';
 import 'package:weather_app_flutter/pages/ana_sayfa.dart';
 import 'package:weather_app_flutter/controllers/hava_durumu_controller.dart';
+import 'package:weather_app_flutter/utils/constanst.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,10 +35,12 @@ class HavaDurumuUygulamasi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hava Durumu Uygulaması',
-      home: AnaSayfa(),
+      theme: AppTheme.lightTheme,
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      home: const AnaSayfa(),
     );
   }
 }

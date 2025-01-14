@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import '../model/weather_model.dart';
+import '../model/hava_durumu_model.dart';
 import '../model/tahmin_model.dart';
 import '../model/hava_kalitesi_model.dart';
 
@@ -9,7 +9,7 @@ class WeatherApiClient {
   static const String _apiAdresi = 'https://api.openweathermap.org/data/2.5';
   static const String _apiAnahtari = '7b313b5d9e8ec632b31dd871a50513d3';
 
-  Future<WeatherModel> getCurrentWeather(String city) async {
+  Future<HavaDurumuModel> getCurrentWeather(String city) async {
     if (city.isEmpty) {
       throw ArgumentError('City name cannot be empty');
     }
@@ -31,7 +31,7 @@ class WeatherApiClient {
         throw Exception(data['error']['message']);
       }
 
-      return WeatherModel.fromJson(data);
+      return HavaDurumuModel.fromJson(data);
     } on FormatException catch (e) {
       throw Exception('Failed to parse weather data: ${e.message}');
     } catch (e) {
