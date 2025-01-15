@@ -70,14 +70,16 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     color: Colors.white,
                   ),
                   const SizedBox(height: 32),
-                  Text(
-                    'Caelum',
-                    style: const TextStyle(
+                    Text(
+                    'CAELUM',
+                    style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      // ignore: deprecated_member_use
+                      color: Colors.white.withOpacity(0.9),
+                      letterSpacing: 2,
                     ),
-                  ),
+                    ),
                   const SizedBox(height: 48),
                   _buildTextField(
                     controller: _emailController,

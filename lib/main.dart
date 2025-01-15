@@ -15,7 +15,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Caelum',
+      title: 'CAELUM', 
       theme: AppTheme.lightTheme,
       darkTheme: ThemeData.dark(useMaterial3: true),
       home: const GirisSayfasi(),

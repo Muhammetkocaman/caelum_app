@@ -25,16 +25,16 @@ class HavaDurumuModel {
 
   factory HavaDurumuModel.fromJson(Map<String, dynamic> json) {
     return HavaDurumuModel(
-      sehirAdi: json['name'],
-      ulke: json['sys']['country'],
-      sicaklik: json['main']['temp'].toDouble(),
-      hissedilen: json['main']['feels_like'].toDouble(),
-      durum: json['weather'][0]['main'],
-      aciklama: json['weather'][0]['description'],
-      ruzgar: json['wind']['speed'].toDouble(),
-      basinc: json['main']['pressure'],
-      nem: json['main']['humidity'],
-      icon: json['weather'][0]['icon'],
+      sehirAdi: json["name"],
+      ulke: json["sys"]["country"],
+      sicaklik: json["main"]["temp"].toDouble(),
+      hissedilen: json["main"]["feels_like"].toDouble(),
+      durum: json["weather"][0]["main"],
+      aciklama: json["weather"][0]["description"],
+      ruzgar: json["wind"]["speed"].toDouble(),
+      basinc: json["main"]["pressure"],
+      nem: json["main"]["humidity"],
+      icon: json["weather"][0]["icon"],
     );
   }
 } 

@@ -38,23 +38,12 @@ class HavaDurumuController extends GetxController {
 
   Future<void> veriGetir(String? sehir) async {
     if (sehir == null || sehir.isEmpty) return;
-    
     yukleniyor.value = true;
     try {
-      final hava = await _apiClient.getCurrentWeather(sehir);
-      havaDurumu.value = hava;
-      
-      final kalite = await _apiClient.getHavaKalitesi();
-      havaKalitesi.value = kalite;
-      
-      final tahminListesi = await _apiClient.getTahminler();
-      tahminler.value = tahminListesi;
+      havaDurumu.value = (await _apiClient.getCurrentWeather(sehir)) as HavaDurumuModel?;
+      // ... diğer API çağrıları ...
     } catch (e) {
-      Get.snackbar(
-        'Hata',
-        'Veriler yüklenirken bir hata oluştu: $e',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Hata', e.toString());
     } finally {
       yukleniyor.value = false;
     }
