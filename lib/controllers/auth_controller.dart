@@ -68,7 +68,7 @@ class AuthController extends GetxController {
 
       if (userCredential.user != null) {
         print('Giriş başarılı: ${userCredential.user!.uid}');
-        Get.offAll(() => AnaSayfa()); // veya hedef sayfanız
+        Get.offAll(() => const AnaSayfa()); // veya hedef sayfanız
       } else {
         print('Giriş başarısız: Kullanıcı null');
         Get.snackbar(
@@ -105,7 +105,11 @@ class AuthController extends GetxController {
 
   Future<void> cikisYap() async {
     await _auth.signOut();
-    Get.offAll(() => GirisSayfasi());
+    Get.offAll(() => const GirisSayfasi());
+  }
+
+  Future<void> misafirGirisi() async {
+    Get.offAll(() => const AnaSayfa());
   }
 
   String _hataMesajiCevir(FirebaseAuthException e) {

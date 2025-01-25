@@ -97,6 +97,18 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                   _buildGirisButonu(),
                   const SizedBox(height: 16),
                   _buildKayitButonu(),
+                  const SizedBox(height: 24),
+                  TextButton(
+                    onPressed: () => _authController.misafirGirisi(),
+                    child: const Text(
+                      'Misafir Olarak Devam Et',
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 16,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
